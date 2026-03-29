@@ -4,7 +4,7 @@ import re
 def tokenize(code):
     # Define regular expressions for all valid tokens based on the BNF grammar
     token_specification = [
-        ('COMMENT', r'/\*.*?\*/'),  # Multi-line comments
+        ('COMMENT', r'/\*.*?\*/'),  # Multi-line comments /* ... */
         ('KEYWORD', r'\b(int|if|then|else|endif|while|do|enddo|print)\b'),
         ('RELOP', r'==|!=|<=|>=|<|>'),  # Relational operators
         ('OPERATOR', r'[+\-*/=\[\]\(\)]'),  # Arithmetic, assignment, and brackets
@@ -40,17 +40,13 @@ def tokenize(code):
 if __name__ == "__main__":
     # Sample code including an array declaration and a comment
     sample_program = """
-    /* This is a block comment
-       testing the scanner to ensure it ignores this text */
     int x = 10, a[3];
     if (x < 20) then
         print(x);
     endif
     """
     
-    print("Source Code:")
-    print(sample_program)
-    print("-" * 30)
+    print("Source Code:", sample_program)
     print("Tokens Generated:")
     
     # Run the lexical analyzer
